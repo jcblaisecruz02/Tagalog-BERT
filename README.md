@@ -18,7 +18,7 @@ The WikiText-TL-39 dataset is available in five files:
 * ```test.txt``` [[Link]](https://storage.googleapis.com/blaisecruz/datasets/wikitext-tl-39/test.txt) -- Preprocessed test split with unknown tokens masked.
 * ```raw_test.txt``` [[Link]](https://storage.googleapis.com/blaisecruz/datasets/wikitext-tl-39/raw_test.txt) -- Raw test split with unknown tokens not masked.
 
-Like the original [WikiText Dataset](https://blog.einstein.ai/the-wikitext-long-term-dependency-language-modeling-dataset/), no further preprocessing is necessary except splitting by space. Documents are separated by heading titles. For details on how the datasets is further preprocessed for BERT & ULMFiT, please refer to our paper.
+Like the original [WikiText Dataset](https://blog.einstein.ai/the-wikitext-long-term-dependency-language-modeling-dataset/), no further preprocessing is necessary except splitting by space. Documents are separated by heading titles. For corpus details and details on how the datasets are further preprocessed for BERT & ULMFiT, please refer to our paper.
 
 ## BERT Models
 We provide pretrained BERT-Base models using our provided corpora. The models were trained on Google's Tensor Processing Unit (TPU) v2-8 using Google's [scripts](https://github.com/google-research/bert). Please see our paper for model and training details.
