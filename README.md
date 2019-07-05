@@ -10,6 +10,17 @@ If you use any of our models or found or work useful, please cite appropriately:
   year={2019}
 }
 ```
+### *** UPDATES 7/5/2019 ***
+
+We're working on training and open-sourcing the following stuff:
+1. BERT-Base models with larger maximum sequence lengths (512 MSL)
+2. BERT-Base models that use whole word masking
+3. BERT-Large models in both cased and uncased flavors.
+
+Stay tuned!
+
+---
+
 ## Dataset
 The WikiText-TL-39 dataset is available in five files:
 * ```full.txt``` [[Link]](https://storage.googleapis.com/blaisecruz/datasets/wikitext-tl-39/full.txt) -- Full dataset with no preprocessing.
