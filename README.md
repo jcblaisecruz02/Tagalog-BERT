@@ -10,6 +10,10 @@ If you use any of our models or found or work useful, please cite appropriately:
   year={2019}
 }
 ```
+### *** UPDATES 7/11/2019 ***
+
+We've added a cased BERT-Large model with a smaller MSL (128) so you can fit it in a 16GB GPU with a smaller batch size (16) without hurting the performance.
+
 ### *** UPDATES 7/5/2019 ***
 
 We're working on training and open-sourcing the following stuff:
@@ -23,19 +27,20 @@ Stay tuned!
 
 ## Dataset
 The WikiText-TL-39 dataset is available in five files:
-* ```full.txt``` [[Link]](https://storage.googleapis.com/blaisecruz/datasets/wikitext-tl-39/full.txt) -- Full dataset with no preprocessing.
-* ```train.txt``` [[Link]](https://storage.googleapis.com/blaisecruz/datasets/wikitext-tl-39/train.txt) -- Preprocessed training split.
-* ```valid.txt``` [[Link]](https://storage.googleapis.com/blaisecruz/datasets/wikitext-tl-39/valid.txt) -- Preprocessed validation split.
-* ```test.txt``` [[Link]](https://storage.googleapis.com/blaisecruz/datasets/wikitext-tl-39/test.txt) -- Preprocessed test split with unknown tokens masked.
-* ```raw_test.txt``` [[Link]](https://storage.googleapis.com/blaisecruz/datasets/wikitext-tl-39/raw_test.txt) -- Raw test split with unknown tokens not masked.
+* [**```full.txt```**](https://storage.googleapis.com/blaisecruz/datasets/wikitext-tl-39/full.txt) -- Full dataset with no preprocessing.
+* [**```train.txt```**](https://storage.googleapis.com/blaisecruz/datasets/wikitext-tl-39/train.txt) -- Preprocessed training split.
+* [**```valid.txt```**](https://storage.googleapis.com/blaisecruz/datasets/wikitext-tl-39/valid.txt) -- Preprocessed validation split.
+* [**```test.txt```**](https://storage.googleapis.com/blaisecruz/datasets/wikitext-tl-39/test.txt) -- Preprocessed test split with unknown tokens masked.
+* [**```raw_test.txt```**](https://storage.googleapis.com/blaisecruz/datasets/wikitext-tl-39/raw_test.txt) -- Raw test split with unknown tokens not masked.
 
 Like the original [WikiText Dataset](https://blog.einstein.ai/the-wikitext-long-term-dependency-language-modeling-dataset/), no further preprocessing is necessary except splitting by space. Documents are separated by heading titles. For corpus details and details on how the datasets are further preprocessed for BERT & ULMFiT, please refer to our paper.
 
 ## BERT Models
-We provide pretrained BERT-Base models using our provided corpora. The models were trained on Google's Tensor Processing Unit (TPU) v2-8 using Google's [scripts](https://github.com/google-research/bert). Please see our paper for model and training details.
+We provide pretrained BERT-Base models using our provided corpora. The models were trained on Google's Tensor Processing Unit (TPU) v2-8 and v3-8 using Google's [scripts](https://github.com/google-research/bert). Please see our paper for model and training details. We provide our BERT-Large models in a smaller maximum sequence length (128 MSL) so they can fit in GPUs using a smaller batch size without hurting the performance.
 
-* BERT-TL-Base-Cased [[Link]](https://storage.googleapis.com/blaisecruz/bert-tagalog/models/bert-tagalog-base-cased.zip)
-* BERT-TL-Base-Uncased [[Link]](https://storage.googleapis.com/blaisecruz/bert-tagalog/models/bert-tagalog-base-uncased.zip)
+* [**```BERT-TL-Base-Cased```**](https://storage.googleapis.com/blaisecruz/bert-tagalog/models/bert-tagalog-base-cased.zip) -- 12-layer, 768-hidden, 12-heads, 110M parameters, 128 MSL
+* [**```BERT-TL-Base-Uncased```**](https://storage.googleapis.com/blaisecruz/bert-tagalog/models/bert-tagalog-base-uncased.zip) -- 12-layer, 768-hidden, 12-heads, 110M parameters, 128 MSL
+* [**```BERT-TL-Large-Cased```**](https://storage.googleapis.com/blaisecruz/bert-tagalog/models/bert-tagalog-large-cased.zip) -- 24-layer, 1024-hidden, 16-heads, 340M parameters, 128 MSL
 
 The results on the paper are done in PyTorch using Huggingface's [BERT implementation](https://github.com/huggingface/pytorch-pretrained-BERT), however, our checkpoints are also compatible with the Tensorflow code in Google's [finetuning repository](https://github.com/google-research/bert). Please consult either repository for details on how to use the BERT models.
 
@@ -44,7 +49,7 @@ For usage, please ensure that you have a GPU with at least 12GB VRAM to fit size
 ## ULMFiT Models
 We provide a pretrained AWD-LSTM model using our provided corpora.
 
-* AWD-LSTM [[Link]](https://storage.googleapis.com/blaisecruz/ulmfit-tagalog/models/pretrained-wikitext-tl-39.zip)
+* [**```AWD-LSTM```**](https://storage.googleapis.com/blaisecruz/ulmfit-tagalog/models/pretrained-wikitext-tl-39.zip)
 
 The model and the results on the paper were done in PyTorch using in-house tools we use at our lab. As such, we cannot release pretraining/finetuning code. However, extra work has been done to ensure that our pretrained checkpoints are also compatible with the [FastAI](https://github.com/fastai/fastai) library, which provides the original implementation for ULMFiT. Please check details in the library's repository for more information on usage.
 
