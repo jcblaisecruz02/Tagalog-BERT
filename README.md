@@ -12,9 +12,15 @@ If you use any of our models or found or work useful, please cite appropriately:
 ```
 ### *** UPDATES 7/12/2019 ***
 
+**New Models**
 1. We've added BERT-Large models in a smaller MSL (128) to allow it to fit in GPUs with smaller batch sizes without hurting model performance. We use a batch size of 16 on a 16GB GPU.
 2. We've updated the BERT-Base models to use the standard MSL (512) the same as Google's checkpoints.
 3. We've included BERT-Base models that use Whole Word Masking (WWM) that show improved results in entailment and sentence-pair classification tasks.
+
+**Future Additions**
+We're working on Multitasking with BERT, especially in Tagalog. We'll add in the models and the finetuning scripts once we're done with our work.
+
+Stay tuned!
 
 ---
 
