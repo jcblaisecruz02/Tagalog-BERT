@@ -10,18 +10,11 @@ If you use any of our models or found or work useful, please cite appropriately:
   year={2019}
 }
 ```
-### *** UPDATES 7/11/2019 ***
+### *** UPDATES 7/12/2019 ***
 
-We've added a cased BERT-Large model with a smaller MSL (128) so you can fit it in a 16GB GPU with a smaller batch size (16) without hurting the performance. We've also updated the BERT-Base models to use a larger MSL (512) the same as Google Research's checkpoints.
-
-### *** UPDATES 7/5/2019 ***
-
-We're working on training and open-sourcing the following stuff:
-1. BERT-Base models with larger maximum sequence lengths (512 MSL)
-2. BERT-Base models that use whole word masking
-3. BERT-Large models in both cased and uncased flavors.
-
-Stay tuned!
+1. We've added BERT-Large models in a smaller MSL (128) to allow it to fit in GPUs with smaller batch sizes without hurting model performance. We use a batch size of 16 on a 16GB GPU.
+2. We've updated the BERT-Base models to use the standard MSL (512) the same as Google's checkpoints.
+3. We've included BERT-Base models that use Whole Word Masking (WWM) that show improved results in entailment and sentence-pair classification tasks.
 
 ---
 
@@ -44,6 +37,9 @@ We provide pretrained BERT-Base models using our provided corpora. The models we
 
 **Large Models**
 * [**```BERT-TL-Large-Cased```**](https://storage.googleapis.com/blaisecruz/bert-tagalog/models/bert-tagalog-large-cased.zip) -- 24-layer, 1024-hidden, 16-heads, 340M parameters, 128 MSL
+
+**Whole Word Masking Models**
+* [**```BERT-TL-Base-Cased```**](https://storage.googleapis.com/blaisecruz/bert-tagalog/models-512/bert-tagalog-base-cased-WWM.zip) -- 12-layer, 768-hidden, 12-heads, 110M parameters, 512 MSL, Whole Word Masking Pretraining
 
 The results on the paper are done in PyTorch using Huggingface's [BERT implementation](https://github.com/huggingface/pytorch-pretrained-BERT), however, our checkpoints are also compatible with the Tensorflow code in Google's [finetuning repository](https://github.com/google-research/bert). Please consult either repository for details on how to use the BERT models.
 
