@@ -12,7 +12,7 @@ If you use any of our models or found or work useful, please cite appropriately:
 ```
 ### *** UPDATES 7/11/2019 ***
 
-We've added a cased BERT-Large model with a smaller MSL (128) so you can fit it in a 16GB GPU with a smaller batch size (16) without hurting the performance.
+We've added a cased BERT-Large model with a smaller MSL (128) so you can fit it in a 16GB GPU with a smaller batch size (16) without hurting the performance. We've also updated the BERT-Base models to use a larger MSL (512) the same as Google Research's checkpoints.
 
 ### *** UPDATES 7/5/2019 ***
 
@@ -38,13 +38,16 @@ Like the original [WikiText Dataset](https://blog.einstein.ai/the-wikitext-long-
 ## BERT Models
 We provide pretrained BERT-Base models using our provided corpora. The models were trained on Google's Tensor Processing Unit (TPU) v2-8 and v3-8 using Google's [scripts](https://github.com/google-research/bert). Please see our paper for model and training details. We provide our BERT-Large models in a smaller maximum sequence length (128 MSL) so they can fit in GPUs using a smaller batch size without hurting the performance.
 
-* [**```BERT-TL-Base-Cased```**](https://storage.googleapis.com/blaisecruz/bert-tagalog/models/bert-tagalog-base-cased.zip) -- 12-layer, 768-hidden, 12-heads, 110M parameters, 128 MSL
-* [**```BERT-TL-Base-Uncased```**](https://storage.googleapis.com/blaisecruz/bert-tagalog/models/bert-tagalog-base-uncased.zip) -- 12-layer, 768-hidden, 12-heads, 110M parameters, 128 MSL
+**Base Models**
+* [**```BERT-TL-Base-Cased```**](https://storage.googleapis.com/blaisecruz/bert-tagalog/models-512/bert-tagalog-base-cased.zip) -- 12-layer, 768-hidden, 12-heads, 110M parameters, 512 MSL
+* [**```BERT-TL-Base-Uncased```**](https://storage.googleapis.com/blaisecruz/bert-tagalog/models-512/bert-tagalog-base-uncased.zip) -- 12-layer, 768-hidden, 12-heads, 110M parameters, 512 MSL
+
+**Large Models**
 * [**```BERT-TL-Large-Cased```**](https://storage.googleapis.com/blaisecruz/bert-tagalog/models/bert-tagalog-large-cased.zip) -- 24-layer, 1024-hidden, 16-heads, 340M parameters, 128 MSL
 
 The results on the paper are done in PyTorch using Huggingface's [BERT implementation](https://github.com/huggingface/pytorch-pretrained-BERT), however, our checkpoints are also compatible with the Tensorflow code in Google's [finetuning repository](https://github.com/google-research/bert). Please consult either repository for details on how to use the BERT models.
 
-For usage, please ensure that you have a GPU with at least 12GB VRAM to fit sizeable batch sizes that will not hurt finetuning performance. Please check the ```config.json``` file in the BERT models for details on how to setup the models for use. Note that our models use a maximum sequence length of 128 instead of 512, which allows larger batch sizes. Be sure to adjust your code to account for this change.
+For usage, please ensure that you have a GPU with at least 16GB VRAM to fit sizeable batch sizes that will not hurt finetuning performance. Please check the ```config.json``` file in the BERT models for details on how to setup the models for use. 
 
 ## ULMFiT Models
 We provide a pretrained AWD-LSTM model using our provided corpora.
