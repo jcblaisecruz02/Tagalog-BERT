@@ -48,7 +48,7 @@ We provide pretrained BERT-Base models using our provided corpora. The models we
 
 **Whole Word Masking Models**
 * [**```BERT-TL-Base-Cased```**](https://storage.googleapis.com/blaisecruz/bert-tagalog/models-512/bert-tagalog-base-cased-WWM.zip) -- 12-layer, 768-hidden, 12-heads, 110M parameters, 512 MSL, Whole Word Masking Pretraining
-* [**```BBERT-TL-Base-Uncased```**](https://storage.googleapis.com/blaisecruz/bert-tagalog/models-512/bert-tagalog-base-uncased-WWM.zip) -- 12-layer, 768-hidden, 12-heads, 110M parameters, 512 MSL, Whole Word Masking Pretraining
+* [**```BERT-TL-Base-Uncased```**](https://storage.googleapis.com/blaisecruz/bert-tagalog/models-512/bert-tagalog-base-uncased-WWM.zip) -- 12-layer, 768-hidden, 12-heads, 110M parameters, 512 MSL, Whole Word Masking Pretraining
 
 The results on the paper are done in PyTorch using Huggingface's [BERT implementation](https://github.com/huggingface/pytorch-pretrained-BERT), however, our checkpoints are also compatible with the Tensorflow code in Google's [finetuning repository](https://github.com/google-research/bert). Please consult either repository for details on how to use the BERT models.
 
