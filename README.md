@@ -10,6 +10,9 @@ If you use any of our models or found or work useful, please cite appropriately:
   year={2019}
 }
 ```
+
+Download links are available at: https://github.com/jcblaisecruz02/Tagalog-BERT
+
 ### *** UPDATES 7/18/2019 ***
 
 **New Models**
