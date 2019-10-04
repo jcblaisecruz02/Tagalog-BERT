@@ -39,7 +39,7 @@ The results on the paper are done in PyTorch using Huggingface's [BERT implement
 
 For usage, please ensure that you have a GPU with at least 16GB VRAM to fit sizeable batch sizes that will not hurt finetuning performance. Please check the ```config.json``` file in the BERT models for details on how to setup the models for use. 
 
-We have included a finetuning script for text classification in this repository. This example setup finetunes the model to a sentiment classification task using 4 GPUs.
+We have included a finetuning script for text classification in this repository. This example setup finetunes the model to a sentiment classification task using 4 GPUs. The script trains using a file named ```train.csv``` in the folder ```data/corpus```. The dataset must have columns named *text* and *sentiment*.
 
 ```sh
 python bert_classify.py \
