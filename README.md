@@ -1,5 +1,5 @@
 # BERT/ULMFiT Filipino
-This repository contains data and pretrained models for the paper **Evaluating Language Model Finetuning Techniques for Low-resource Languages**.
+This repository contains code, data and pretrained models for the paper **Evaluating Language Model Finetuning Techniques for Low-resource Languages**.
 
 If you use any of our models or found or work useful, please cite appropriately:
 ```
@@ -10,21 +10,6 @@ If you use any of our models or found or work useful, please cite appropriately:
   year={2019}
 }
 ```
-### *** UPDATES 7/18/2019 ***
-
-**New Models**
-
-1. We've added BERT-Large models in a smaller MSL (128) to allow it to fit in GPUs with smaller batch sizes without hurting model performance. We use a batch size of 16 on a 16GB GPU.
-2. We've updated the BERT-Base models to use the standard MSL (512) the same as Google's checkpoints.
-3. We've included BERT-Base models that use Whole Word Masking (WWM) that show improved results in entailment and sentence-pair classification tasks.
-
-**Future Additions**
-
-We're working on Multitasking with BERT, especially in Tagalog. We'll add in the models and the finetuning scripts once we're done with our work.
-
-Stay tuned!
-
----
 
 ## Dataset
 The WikiText-TL-39 dataset is available in five files:
@@ -37,7 +22,7 @@ The WikiText-TL-39 dataset is available in five files:
 Like the original [WikiText Dataset](https://blog.einstein.ai/the-wikitext-long-term-dependency-language-modeling-dataset/), no further preprocessing is necessary except splitting by space. Documents are separated by heading titles. For corpus details and details on how the datasets are further preprocessed for BERT & ULMFiT, please refer to our paper.
 
 ## BERT Models
-We provide pretrained BERT-Base models using our provided corpora. The models were trained on Google's Tensor Processing Unit (TPU) v2-8 and v3-8 using Google's [scripts](https://github.com/google-research/bert). Please see our paper for model and training details. We provide our BERT-Large models in a smaller maximum sequence length (128 MSL) so they can fit in GPUs using a smaller batch size without hurting the performance.
+We provide pretrained BERT models trained using our provided corpora. The models were trained on Google's Tensor Processing Unit (TPU) v3-8 using Google's pretraining [scripts](https://github.com/google-research/bert). Please see our paper for model and training details. We provide our BERT-Large models in a smaller maximum sequence length (128 MSL) so they can fit in GPUs using a smaller batch size without hurting the performance.
 
 **Base Models**
 * [**```BERT-TL-Base-Cased```**](https://storage.googleapis.com/blaisecruz/bert-tagalog/models-512/bert-tagalog-base-cased.zip) -- 12-layer, 768-hidden, 12-heads, 110M parameters, 512 MSL
@@ -50,9 +35,31 @@ We provide pretrained BERT-Base models using our provided corpora. The models we
 * [**```BERT-TL-Base-Cased```**](https://storage.googleapis.com/blaisecruz/bert-tagalog/models-512/bert-tagalog-base-cased-WWM.zip) -- 12-layer, 768-hidden, 12-heads, 110M parameters, 512 MSL, Whole Word Masking Pretraining
 * [**```BERT-TL-Base-Uncased```**](https://storage.googleapis.com/blaisecruz/bert-tagalog/models-512/bert-tagalog-base-uncased-WWM.zip) -- 12-layer, 768-hidden, 12-heads, 110M parameters, 512 MSL, Whole Word Masking Pretraining
 
-The results on the paper are done in PyTorch using Huggingface's [BERT implementation](https://github.com/huggingface/pytorch-pretrained-BERT), however, our checkpoints are also compatible with the Tensorflow code in Google's [finetuning repository](https://github.com/google-research/bert). Please consult either repository for details on how to use the BERT models.
+The results on the paper are done in PyTorch using Huggingface's [BERT implementation](https://github.com/huggingface/transformers), however, our checkpoints are also compatible with the Tensorflow code in Google's [finetuning repository](https://github.com/google-research/bert). Please consult either repository for details on how to use the BERT models.
 
 For usage, please ensure that you have a GPU with at least 16GB VRAM to fit sizeable batch sizes that will not hurt finetuning performance. Please check the ```config.json``` file in the BERT models for details on how to setup the models for use. 
+
+We have included a finetuning script for text classification in this repository. This example setup finetunes the model to a sentiment classification task using 4 GPUs.
+
+```sh
+python bert_classify.py \
+    --data=data/corpus \
+    --filename=train \
+    --model=bert/bert-tagalog-base-cased \
+    --config=bert_config.json \
+    --train_size=0.7 \
+    --epochs=3 \
+    --msl=512 \
+    --bs=32 \
+    --lr=5e-5 \
+    --warmup=0.1 \
+    --max_norm=1.0 \
+    --cuda \
+    --multi \
+    --gpus=4 \
+    --seed=42\
+    --output=models/finetuned.pt
+```
 
 ## ULMFiT Models
 We provide a pretrained AWD-LSTM model using our provided corpora.
